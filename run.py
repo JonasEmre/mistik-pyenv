@@ -10,6 +10,12 @@ habel = Characters('Habel', weapon=short_sword, armor=leather_armor,
 cain = Characters('Cain', weapon=unarmed, armor=cloth,
                   strength=90, dexterity=90, intelligence=45)
 habel.inventory.add_item(long_sword)
+habel.get_dmg(50)
+habel.inventory.add_item(health_potion)
+habel.inventory.check()
 print(habel)
-
-
+print("****************")
+habel.use_item(health_potion)
+item = habel.inventory.find_item('Health Potion')
+print(habel)
+habel.inventory.check()

@@ -91,11 +91,17 @@ class Characters:
 
     def use_item(self, item):
         if self.is_alive:
+            print('item use girildi')
             if isinstance(item, Items) and item.is_usable == True:
                 target_item = self.inventory.find_item(item.name)
-                target_item.use()
-                if item.one_time_use:
-                    self.inventory.rem_item(item.name)
+                if target_item != None:
+                    target_item.use(self)
+                    print('item kullanıldı')
+                    if item.one_time_use:
+                        print('item tek kullanımlık')
+                        self.inventory.rem_item(item.name)
+                else:
+                    print('bu item yok')
                 
     @property
     def is_alive(self):

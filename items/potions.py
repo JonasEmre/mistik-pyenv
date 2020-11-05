@@ -9,23 +9,19 @@ class Potions(Items):
 
 
     def use(self, user):
-        if isinstance(user, Characters):
-            if user.is_alive:
-                if self.effect_type == 'hp':
-                    user.hp += self.effect_value
-                    if user.hp > user.max_hp:
-                        user.hp = user.max_hp
-                elif self.effect_type == 'stamina':
-                    user.stamina += self.effect_value
-                    if user.stamina > user.max_stamina:
-                        user.stamina = user.max_stamina
-                elif self.effect_type == 'mana':
-                    user.mana += self.effect_value
-                    if user.mana > user.max_mana:
-                        user.mana = user.max_mana
-                return True
-            else:
-                return False
+        if user.is_alive:
+            if self.effect_type == 'hp':
+                user.hp += self.effect_value
+                if user.hp > user.max_hp:
+                    user.hp = user.max_hp
+            elif self.effect_type == 'stamina':
+                user.stamina += self.effect_value
+                if user.stamina > user.max_stamina:
+                    user.stamina = user.max_stamina
+            elif self.effect_type == 'mana':
+                user.mana += self.effect_value
+                if user.mana > user.max_mana:
+                    user.mana = user.max_mana
 
 health_potion= Potions('Health Potion', 3, 'hp', 25)
 stamina_potion= Potions('Stamina Potion', 2, 'stamina', 35)
