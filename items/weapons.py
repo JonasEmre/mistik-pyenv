@@ -1,4 +1,4 @@
-from items import Items
+from items.items import Items
 
 class Weapons(Items):
     def __init__(self, name, value, damage):

@@ -1,4 +1,4 @@
-from items import Items
+from items.items import Items
 
 class Armors(Items):
     def __init__(self, name, value, AC):

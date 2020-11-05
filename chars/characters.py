@@ -1,8 +1,8 @@
-from items import Items
-from weapons import Weapons, unarmed
-from armors import Armors, cloth
-from inventory import Inventory
-from potions import Potions
+from items.items import Items
+from items.weapons import Weapons, unarmed
+from items.armors import Armors, cloth
+from items.potions import Potions
+from game_mechanics.inventory import Inventory
 
 class Characters:    
     def __init__(self, name, weapon, armor,

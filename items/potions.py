@@ -1,9 +1,9 @@
-from items import Items
-from characters import Characters
+from items.items import Items
 
 class Potions(Items):
     def __init__(self, name, value, effect_type, effect_value):
-        super().__init__(name, value, is_collectable=True, is_usable=True, one_time_use=True)
+        super().__init__(name, value, is_collectable=True, is_usable=True,
+                         one_time_use=True, is_equipable = False)
         self.effect_type = effect_type
         self.effect_value = effect_value
 

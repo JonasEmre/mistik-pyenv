@@ -1,4 +1,4 @@
-from characters import Characters
+from chars.characters import Characters
 
 class Humanoids(Characters):
 
