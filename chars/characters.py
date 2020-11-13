@@ -6,12 +6,13 @@ from game_mechanics.inventory import Inventory
 
 class Characters:    
     def __init__(self, name, weapon, armor,
-                 strength, dexterity, intelligence, inventory=Inventory(), gold=0):
+                 strength, dexterity, intelligence, inventory=Inventory(), gold=0, target=None):
         self.name = name
         self.hp = strength
         self.stamina = dexterity
         self.mana = intelligence
         self.gold = gold
+        self.target = target
         if isinstance(weapon, Weapons):
              self.weapon = weapon
         else:
