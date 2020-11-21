@@ -1,12 +1,12 @@
 from items.items import Items
 
+
 class Potions(Items):
     def __init__(self, name, value, effect_type, effect_value):
         super().__init__(name, value, is_collectable=True, is_usable=True,
-                         one_time_use=True, is_equipable = False)
+                         one_time_use=True, is_equipable=False)
         self.effect_type = effect_type
         self.effect_value = effect_value
-
 
     def use(self, user):
         if user.is_alive:
@@ -23,8 +23,7 @@ class Potions(Items):
                 if user.mana > user.max_mana:
                     user.mana = user.max_mana
 
-health_potion= Potions('Health Potion', 3, 'hp', 25)
-stamina_potion= Potions('Stamina Potion', 2, 'stamina', 35)
-mana_potion= Potions('Mana Potion', 4, 'mana', 20)
 
-        
+health_potion = Potions('Health Potion', 3, 'hp', 25)
+stamina_potion = Potions('Stamina Potion', 2, 'stamina', 35)
+mana_potion = Potions('Mana Potion', 4, 'mana', 20)

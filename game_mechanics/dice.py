@@ -1,11 +1,11 @@
 import random
 
-class Dice():
+
+class Dice:
     def __init__(self, lowest, highest, bless=0):
         self.lowest = lowest
         self.highest = highest
         self.bless = bless
-
 
     def roll(self):
         return random.randint(self.lowest, self.highest) + self.bless

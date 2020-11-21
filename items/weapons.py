@@ -1,6 +1,7 @@
 from items.items import Items
 from game_mechanics.dice import Dice, four_sided, six_sided, eight_sided, ten_sided, twenty_sided
 
+
 class Weapons(Items):
     def __init__(self, name, value):
         super().__init__(name, value, is_equipable=True, is_collectable=True)
@@ -18,7 +19,6 @@ class Weapons(Items):
         elif self.name == 'Long Axe':
             return 8
 
-    
     @property
     def damage(self):
         if self.dice_type == 4:
@@ -31,10 +31,10 @@ class Weapons(Items):
             return ten_sided.roll()
         elif self.dice_type == 20:
             return twenty_sided.roll()
-        
-        
+
     def hit(self):
         pass
+
 
 unarmed = Weapons('Unarmed', 25)
 short_sword = Weapons('Short Sword', 25)
