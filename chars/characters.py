@@ -1,18 +1,18 @@
-from items.items import Items
-from items.weapons import Weapons, unarmed
-from items.armors import Armors, cloth
-from items.potions import Potions
+#from items.items import Items
+#from items.weapons import Weapons, unarmed
+#from items.armors import Armors, cloth
+#from items.potions import Potions
 from game_mechanics.inventory import Inventory
 
-class Characters:    
+class Characters:
     def __init__(self, name, weapon, armor,
-                 strength, dexterity, intelligence, inventory=Inventory(), gold=0, target=None):
+                 strength, dexterity, intelligence, inventory=Inventory(), gold=0, target=None,
+                 is_attacking=False, is_defending=False):
         self.name = name
-        self.hp = strength
-        self.stamina = dexterity
-        self.mana = intelligence
         self.gold = gold
         self.target = target
+        self.is_attacking = is_attacking
+        self.is_defending = is_defending
         if isinstance(weapon, Weapons):
              self.weapon = weapon
         else:
@@ -20,14 +20,14 @@ class Characters:
         if isinstance(armor, Armors):
             self.armor = armor
         else:
-            self.armor = cloth
-            
+            self.armor = cloth        
         self.strength = strength
         self.dexterity = dexterity
         self.intelligence = intelligence
+        self.hp = strength
+        self.stamina = dexterity
+        self.mana = intelligence
         self.inventory = inventory
-
-        self.target = None
 
 
     @property
@@ -48,7 +48,7 @@ class Characters:
     @property
     def damage(self):
         if self.is_alive:
-            if self.weapon == 'unarmed':
+            if self.weapon.name == 'unarmed':
                 return self.strength * 0.1
             elif isinstance(self.weapon, Weapons):
                 return self.weapon.damage + (self.strength * 0.1)
@@ -86,8 +86,6 @@ class Characters:
             if isinstance(item, Items):
                 if item.is_collectable == True:
                     self.inventory.add_item(item)
-                else:
-                    return "it's not collectable"
 
 
     def use_item(self, item):
