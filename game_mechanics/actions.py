@@ -1,13 +1,27 @@
 from chars.characters import Characters
+from world.locations import Location
 
 
 class Actions():
-    def __init__(self, owner, opponent):
+    def __init__(self, owner, oppenent):
         self.owner = owner
         self.opponent = opponent
 
+
     def execute(self):
         pass
+
+
+    @staticmethod
+    def move(subject, location, target):
+        if isinstance(subject, Characters) and isinstance(location, Location) and subject.is_alive=True:
+            for locations in location.connections:
+                if target in location.connections[location]:
+                    new_location = location
+            
+            
+        
+        
 
 
 class Attack(Actions):
