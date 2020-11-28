@@ -12,6 +12,7 @@ class Characters:
         self.gold = gold
         self.target = target
         self.location = location
+        self.last_location = location
         self.is_attacking = is_attacking
         self.is_defending = is_defending
         if isinstance(weapon, Weapons):

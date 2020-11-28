@@ -1,8 +1,8 @@
 from chars.characters import Characters
-from world.locations import Location
+from world.locations import Location, world_locations
 
 
-class Actions():
+class Action():
     def __init__(self, owner, oppenent):
         self.owner = owner
         self.opponent = opponent
@@ -14,17 +14,19 @@ class Actions():
 
     @staticmethod
     def move(subject, location, target):
-        if isinstance(subject, Characters) and isinstance(location, Location) and subject.is_alive=True:
-            for locations in location.connections:
-                if target in location.connections[location]:
+        if isinstance(subject, Characters) and isinstance(location, Location) and subject.is_alive==True:
+            #print('Debug Move')
+            old_location = subject.location
+            new_location = None
+            for location in world_locations:
+                if target == location.name:
                     new_location = location
+                    #print('{}'.format(new_location))
+                    subject.location = new_location
             
             
-        
-        
 
-
-class Attack(Actions):
+class Attack(Action):
     def __init__(self, owner, opponent):
         super().__init__(owner, opponent)
 

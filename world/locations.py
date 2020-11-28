@@ -1,14 +1,15 @@
+world_locations = []
 class World:
-    world_locations = []
     def __init__(self):
-        pass
+        world_locations.append(self)
         
 class Location(World):
-    def __init__(self, name, connections=dict()):
+    def __init__(self, name, connections=dict(), places=[], back=None):
         super().__init__()
         self.name = name
         self.connections = connections
-
+        self.places = places
+        self.back = back
 
     def __repr__(self):
         return '{}'.format(self.name)
@@ -24,16 +25,23 @@ class City(Location):
         self.market = market
         self.city_hall = city_hall
         self.holdings = holdings
+        self.places.extend([self.castle, self.bank, self.temple, self.market, self.city_hall])
+        
 
 
 class Castle(Location):
-    def __init__(self, name):
+    def __init__(self, name, lords_hall, enterance, dungeon):
         super().__init__(name)
+        self.lords_hall = lords_hall
+        self.enterance = enterance
+        self.dungeon = dungeon
 
 
 class Bank(Location):
     def __init__(self, name):
         super().__init__(name)
+        self.chest = {'Amount': 0, 'Rate': float(3)}
+        self.clerk = {'Debt': 0, 'Interest': float(4)}
 
 
 class Temple(Location):
@@ -54,23 +62,3 @@ class CityHall(Location):
 class Guild(Location):
     def __init__(self, name):
         super().__init__(name)
-
-
-
-ancyra = City(name='Ancyra',
-              connections = {'north': 'Crossroad',
-                             'east': 'None',
-                             'south': 'Steppe',
-                             'west': 'None'},
-              castle=Castle("Lord's Castle"),
-              bank=Bank('City Bank'),
-              temple=Temple('Temple'),
-              market=Market('Market'),
-              city_hall=CityHall('City Hall'),
-              holdings={'main': Guild('Red Guild'), 'secondary': Guild('Blue Guild')})
-
-crossroad = Location('Crossroad',
-                     connections = {'north': 'Dungeon',
-                             'east': 'East',
-                             'south': 'Ancyra',
-                             'west': 'Graveyard'})
